@@ -1,0 +1,206 @@
+:root{
+  --bg:#f0ebe0;
+  --bg2:#e8e2d4;
+  --bg3:#dfd8c8;
+  --bg-card:#faf7f0;
+  --ink:#2a2010;
+  --gold:#7a6020;
+  --gold-l:#a88028;
+  --gold-dim:rgba(122,96,32,.12);
+  --muted:#7a7060;
+  --muted2:#a09880;
+  --red:#802020;
+  --blue:#284470;
+  --border:rgba(120,96,32,.22);
+  --border2:rgba(120,96,32,.1);
+  --shadow:rgba(60,44,10,.07);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Serif SC',serif;min-height:100vh;}
+.wrap{max-width:820px;margin:0 auto;padding:48px 24px 100px;}
+
+/* ── 标题 ── */
+header{text-align:center;margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid var(--border);}
+.title{font-size:2.2rem;font-weight:300;letter-spacing:.65em;color:var(--ink);margin-right:-.65em;}
+.subtitle{font-size:.8rem;letter-spacing:.28em;color:var(--muted2);margin-top:8px;}
+.hr-gold{width:160px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:14px auto 0;}
+
+/* ── 标签 ── */
+.sec-label{font-size:.74rem;letter-spacing:.26em;color:var(--gold);margin-bottom:11px;display:block;}
+
+/* ── 卡片 ── */
+.card{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:22px;margin-bottom:20px;box-shadow:0 2px 8px var(--shadow);}
+
+/* ── 时间输入 ── */
+.time-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+.time-row input[type=datetime-local]{
+  background:var(--bg2);border:1px solid var(--border);color:var(--ink);
+  font-family:'Noto Serif SC',serif;font-size:.96rem;padding:8px 12px;
+  border-radius:3px;outline:none;flex:1;min-width:200px;}
+.time-row input:focus{border-color:var(--gold);}
+.btn-sm{background:transparent;border:1px solid var(--border);color:var(--muted);
+  font-family:'Noto Serif SC',serif;font-size:.8rem;padding:8px 14px;border-radius:3px;
+  cursor:pointer;letter-spacing:.1em;white-space:nowrap;transition:all .2s;}
+.btn-sm:hover{border-color:var(--gold);color:var(--gold);}
+.sizhi-show{font-size:.9rem;color:var(--muted);letter-spacing:.06em;margin-top:10px;line-height:2.4;}
+.sizhi-show b{color:var(--ink);}
+
+/* ── 模式切换 ── */
+.tabs{display:flex;border:1px solid var(--border);border-radius:3px;overflow:hidden;margin-bottom:16px;}
+.tab{flex:1;padding:9px;text-align:center;font-family:'Noto Serif SC',serif;font-size:.88rem;
+  letter-spacing:.16em;color:var(--muted);background:transparent;border:none;cursor:pointer;transition:all .2s;}
+.tab.on{background:var(--ink);color:#fff;}
+.tab:not(:last-child){border-right:1px solid var(--border);}
+
+/* ── 摇钱法 ── */
+#coinSec{display:none;}#coinSec.show{display:block;}
+#manSec.hide{display:none;}
+.shake-ind{font-size:.88rem;color:var(--muted);letter-spacing:.14em;text-align:center;margin-bottom:12px;}
+.coins-row{display:flex;justify-content:center;gap:22px;margin:14px 0 20px;}
+.coin{width:64px;height:64px;border-radius:50%;
+  background:radial-gradient(circle at 38% 32%,#f0d860,#b89018);
+  border:1.5px solid #a07818;
+  box-shadow:0 2px 8px rgba(140,100,12,.22);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.76rem;color:rgba(60,36,0,.7);font-family:'Noto Serif SC',serif;}
+.coin.shaking{animation:cb .1s ease-in-out infinite alternate;}
+@keyframes cb{from{transform:translateY(0) rotate(-5deg);}to{transform:translateY(-8px) rotate(5deg);}}
+.shake-results{display:flex;flex-direction:column-reverse;gap:5px;margin-top:12px;}
+.shake-row{display:grid;grid-template-columns:56px 1fr 90px;align-items:center;gap:10px;
+  padding:8px 12px;background:var(--bg2);border:1px solid var(--border2);border-radius:3px;font-size:.92rem;}
+.shake-row .sl{font-size:.8rem;color:var(--gold);letter-spacing:.12em;}
+.shake-row .st{text-align:right;font-size:.86rem;}
+.s-yang .st{color:var(--gold);}
+.s-yin  .st{color:var(--blue);}
+.s-yangc .st{color:var(--red);font-weight:600;}
+.s-yinc  .st{color:var(--blue);font-weight:600;}
+
+/* ── 手动输入 ── */
+.yao-grid{display:flex;flex-direction:column;gap:8px;}
+.yao-row{display:grid;grid-template-columns:52px 1fr 26px;align-items:center;gap:10px;
+  padding:8px 12px;background:var(--bg2);border:1px solid var(--border2);border-radius:3px;}
+.yao-label{font-size:.82rem;color:var(--gold);letter-spacing:.16em;}
+.type-btns{display:flex;gap:5px;flex-wrap:wrap;}
+.type-btn{padding:4px 9px;border-radius:3px;border:1px solid var(--border);background:transparent;
+  color:var(--muted);font-family:'Noto Serif SC',serif;font-size:.82rem;cursor:pointer;transition:all .15s;}
+.type-btn.a-yang {background:var(--gold-dim);border-color:var(--gold);color:var(--gold);}
+.type-btn.a-yin  {background:rgba(40,68,112,.07);border-color:var(--blue);color:var(--blue);}
+.type-btn.a-yangc{background:rgba(128,32,32,.07);border-color:var(--red);color:var(--red);font-weight:600;}
+.type-btn.a-yinc {background:rgba(40,68,112,.1);border-color:var(--blue);color:#3a5898;font-weight:600;}
+.yao-prev{font-size:.88rem;color:var(--muted);text-align:center;}
+
+/* ── 按钮 ── */
+.btn-row{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;}
+.btn-primary{background:var(--ink);color:#f5f0e8;border:none;border-radius:3px;padding:11px 30px;
+  font-family:'Noto Serif SC',serif;font-size:.9rem;letter-spacing:.26em;cursor:pointer;transition:background .2s;}
+.btn-primary:hover{background:var(--gold);}
+.btn-primary:disabled{opacity:.35;cursor:not-allowed;}
+.btn-outline{background:transparent;border:1px solid var(--border);color:var(--muted);
+  border-radius:3px;padding:10px 20px;font-family:'Noto Serif SC',serif;font-size:.86rem;
+  letter-spacing:.14em;cursor:pointer;transition:all .2s;}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+
+/* ── 结果区 ── */
+.hidden{display:none;}
+#result{animation:up .4s ease;}
+@keyframes up{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+
+/* ── 四值卡片 ── */
+.meta-grid{display:flex;flex-wrap:wrap;gap:8px;}
+.meta-item{background:var(--bg2);border:1px solid var(--border2);border-radius:3px;padding:9px 14px;min-width:90px;}
+.meta-k{font-size:.72rem;letter-spacing:.18em;color:var(--muted2);margin-bottom:3px;}
+.meta-v{font-size:1rem;color:var(--ink);}
+
+/* ── 卦名标题 ── */
+.gua-hd{display:flex;align-items:baseline;gap:12px;margin-bottom:16px;flex-wrap:wrap;}
+.gua-name{font-size:1.35rem;font-weight:400;color:var(--ink);letter-spacing:.14em;}
+.gua-num{font-size:.76rem;color:var(--muted2);letter-spacing:.1em;}
+.gua-arr{color:var(--muted2);font-size:1rem;margin:0 4px;}
+
+/* ── 排盘表格 ── */
+.paipan{width:100%;border-collapse:collapse;table-layout:auto;}
+.paipan th{
+  font-size:.72rem;letter-spacing:.18em;color:var(--gold);
+  border-bottom:1px solid var(--border);
+  padding:7px 8px;text-align:center;font-weight:400;white-space:nowrap;}
+.paipan td{
+  padding:10px 8px;border-bottom:1px solid var(--border2);
+  vertical-align:middle;text-align:center;font-size:.96rem;}
+.paipan tr:last-child td{border-bottom:none;}
+.paipan tr.dong td{background:rgba(128,32,32,.04);}
+.paipan tr:hover td{background:rgba(122,96,32,.03);}
+
+.col-pos{font-size:.84rem;color:var(--muted);letter-spacing:.04em;white-space:nowrap;}
+.col-ls{font-size:.88rem;color:#3a5888;letter-spacing:.03em;white-space:nowrap;}
+.col-lqnj{font-size:.9rem;letter-spacing:.04em;white-space:nowrap;line-height:1.6;}
+.wx-木{color:#2d6e20;}.wx-火{color:#c03020;}.wx-土{color:#8a6020;}.wx-金{color:#b8920a;}.wx-水{color:#1a5588;}
+
+/* ── 爻象线条 ── */
+.yao-cell{padding:8px 12px !important;}
+.yao-sym{display:inline-flex;flex-direction:column;align-items:center;gap:3px;vertical-align:middle;}
+.yao-sym .ln{height:4px;border-radius:1px;background:var(--ink);}
+.yao-sym .ln.yang{width:50px;}
+.yao-sym .ln.yin-l,.yao-sym .ln.yin-r{width:20px;}
+.yao-sym.ch .ln{background:var(--red);}
+.dong-tag{font-size:.68rem;color:var(--red);margin-left:3px;vertical-align:middle;}
+
+/* ── 世应标记 ── */
+.shi-ying{display:inline-block;font-size:.78rem;letter-spacing:.04em;margin-left:4px;vertical-align:middle;}
+.sm{color:var(--gold);font-weight:600;}
+.ym{color:var(--blue);font-weight:600;}
+
+/* ── 变卦分隔 ── */
+.mid-div{border-left:1px solid var(--border) !important;}
+
+/* ── 卦辞 ── */
+.guaci-block{padding:4px 0;}
+.guaci-ttl{font-size:.76rem;letter-spacing:.2em;color:var(--gold);margin-bottom:8px;}
+.guaci-orig{font-size:.98rem;line-height:2.1;color:var(--ink);letter-spacing:.05em;}
+.guaci-bh{font-size:.9rem;line-height:2;color:var(--muted);margin-top:8px;padding-top:8px;border-top:1px solid var(--border2);}
+.yaoci-item{padding:12px 0;border-bottom:1px solid var(--border2);}
+.yaoci-item:last-child{border-bottom:none;}
+.yaoci-pos{font-size:.74rem;letter-spacing:.16em;color:var(--red);margin-bottom:5px;}
+.yaoci-orig{font-size:.98rem;line-height:2.1;color:var(--ink);}
+.yaoci-bh{font-size:.9rem;line-height:2;color:var(--muted);margin-top:5px;}
+
+/* ── 语言切换 ── */
+.lang-switch{position:fixed;top:16px;right:20px;z-index:100;display:flex;
+  border:1px solid var(--border);border-radius:3px;overflow:hidden;background:var(--bg-card);
+  box-shadow:0 1px 4px var(--shadow);}
+.lang-btn{padding:6px 12px;font-family:'Noto Serif SC',serif;font-size:.8rem;letter-spacing:.08em;
+  color:var(--muted);background:transparent;border:none;cursor:pointer;transition:all .2s;}
+.lang-btn.on{background:var(--ink);color:#f5f0e8;}
+.lang-btn:not(:last-child){border-right:1px solid var(--border);}
+
+/* ── 英文版表格适配 ── */
+body.en .paipan{table-layout:fixed;font-size:.78rem;}
+body.en .paipan th{font-size:.64rem;letter-spacing:.06em;padding:6px 5px;}
+body.en .paipan td{font-size:.78rem;padding:8px 5px;}
+body.en .col-pos{font-size:.74rem;white-space:normal;line-height:1.4;max-width:70px;}
+body.en .col-ls{font-size:.74rem;white-space:normal;line-height:1.4;max-width:80px;}
+body.en .col-lqnj{font-size:.76rem;white-space:normal;line-height:1.5;max-width:130px;}
+body.en .nj-dz{font-size:.76rem;}
+body.en .yao-cell{padding:6px 8px !important;max-width:60px;}
+body.en .yao-sym .ln.yang{width:38px;}
+body.en .yao-sym .ln.yin-l,body.en .yao-sym .ln.yin-r{width:15px;}
+body.en .gua-name{font-size:1rem;}
+body.en .meta-v{font-size:.82rem;line-height:1.5;}
+body.en .sizhi-show{font-size:.76rem;line-height:2;}
+body.en .sizhi-show b{font-size:.82rem;}
+body.en .meta-item{min-width:unset;flex:1 1 140px;}
+body.en .meta-k{font-size:.64rem;}
+body.en .gua-hd{gap:8px;}
+body.en .gua-num{font-size:.64rem;}
+body.en .shake-row{grid-template-columns:48px 1fr 110px;font-size:.78rem;}
+body.en .shake-row .sl{font-size:.68rem;}
+body.en .type-btn{font-size:.72rem;padding:3px 7px;}
+body.en .yao-label{font-size:.74rem;}
+
+/* ── 英文版卦辞适配 ── */
+body.en .guaci-ttl{font-size:.6rem;letter-spacing:.2em;margin-bottom:7px;}
+body.en .guaci-orig{font-size:.82rem;line-height:2;}
+body.en .guaci-bh{font-size:.75rem;line-height:1.9;margin-top:6px;padding-top:6px;}
+body.en .yaoci-item{padding:10px 0;}
+body.en .yaoci-pos{font-size:.6rem;margin-bottom:4px;}
+body.en .yaoci-orig{font-size:.82rem;line-height:2;}
+body.en .yaoci-bh{font-size:.75rem;line-height:1.9;margin-top:4px;}

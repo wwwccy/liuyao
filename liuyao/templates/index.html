@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>六爻排盘</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<!-- ── 侧边栏 ── -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-hd">
+    <span class="sidebar-title" id="sidebarTitle">历史记录</span>
+    <button class="sidebar-close" onclick="toggleSidebar()" title="关闭">✕</button>
+  </div>
+  <div class="sidebar-list" id="historyList">
+    <div class="sidebar-empty" id="historyEmpty">暂无记录</div>
+  </div>
+</aside>
+
+<!-- ── 侧边栏遮罩（移动端） ── -->
+<div class="sidebar-mask" id="sidebarMask" onclick="toggleSidebar()"></div>
+
+<!-- ── 语言 + 菜单按钮 ── -->
+<div class="topbar">
+  <button class="menu-btn" onclick="toggleSidebar()" id="menuBtn" title="历史记录">☰</button>
+  <div class="lang-switch">
+    <button class="lang-btn on" id="btnZh" onclick="setLang('zh')">中文</button>
+    <button class="lang-btn"   id="btnEn" onclick="setLang('en')">EN</button>
+  </div>
+</div>
+
+<!-- ── 主内容 ── -->
+<div class="main-wrap">
+<div class="wrap">
+<header>
+  <div class="title">六爻排盘</div>
+  <div class="subtitle">纳甲 · 六亲 · 六神 · 空亡 · 卦身</div>
+  <div class="hr-gold"></div>
+</header>
+
+<div class="card">
+  <span class="sec-label">起卦时间</span>
+  <div class="time-row">
+    <input type="datetime-local" id="timeInput">
+    <button class="btn-sm" id="nowBtnEl" onclick="setNow()">当前时间</button>
+  </div>
+  <div class="sizhi-show" id="sizhiShow"></div>
+</div>
+
+<div class="card">
+  <span class="sec-label">起卦方式</span>
+  <div class="tabs">
+    <button class="tab on" id="tabC" onclick="switchMode('coin')">摇钱法</button>
+    <button class="tab"   id="tabM" onclick="switchMode('man')">手动输入</button>
+  </div>
+
+  <div id="coinSec" class="show">
+    <div class="shake-ind" id="shakeInd">准备摇第一爻</div>
+    <div class="coins-row">
+      <div class="coin" id="c0">正</div>
+      <div class="coin" id="c1">正</div>
+      <div class="coin" id="c2">正</div>
+    </div>
+    <div style="text-align:center;">
+      <button class="btn-primary" id="shakeBtn" onclick="doShake()">摇　卦</button>
+    </div>
+    <div class="shake-results" id="shakeRes"></div>
+    <div class="btn-row" id="shakeCastRow" style="display:none;justify-content:center;margin-top:10px;">
+      <button class="btn-primary" id="showResultBtn" onclick="castFromShake()">显示排盘</button>
+    </div>
+  </div>
+
+  <div id="manSec" class="hide">
+    <div class="yao-grid" id="yaoGrid"></div>
+    <div class="btn-row">
+      <button class="btn-primary" id="castManualBtn" onclick="castManual()">排　盘</button>
+      <button class="btn-outline" id="resetManualBtn" onclick="resetAll()">重　置</button>
+    </div>
+  </div>
+</div>
+
+<div id="result" class="hidden">
+  <div class="card" id="metaCard"></div>
+  <div class="card" id="paipanCard"></div>
+  <div class="card" id="guaciCard"></div>
+
+  <!-- AI 解卦 -->
+  <div class="card" id="aiCard">
+    <span class="sec-label" id="aiLabel">AI 解卦</span>
+    <div id="aiResult" class="ai-placeholder" id="aiPlaceholder">点击下方按钮获取 AI 解读</div>
+    <div class="btn-row" style="margin-top:14px;">
+      <button class="btn-primary" id="aiBtn" onclick="doInterpret()">✦ AI 解卦</button>
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center;margin-top:6px;">
+  <button class="btn-outline" id="recastBtn" onclick="resetAll()">重新起卦</button>
+</div>
+</div><!-- .wrap -->
+</div><!-- .main-wrap -->
+
+<script src="{{ url_for('static', filename='data/guaci.js') }}"></script>
+<script src="{{ url_for('static', filename='js/hexagram.js') }}"></script>
+<script src="{{ url_for('static', filename='js/calendar.js') }}"></script>
+<script src="{{ url_for('static', filename='js/i18n.js') }}"></script>
+<script src="{{ url_for('static', filename='js/render.js') }}"></script>
+<script src="{{ url_for('static', filename='js/divination.js') }}"></script>
+<script src="{{ url_for('static', filename='js/ui.js') }}"></script>
+<script src="{{ url_for('static', filename='js/history.js') }}"></script>
+<script src="{{ url_for('static', filename='js/ai.js') }}"></script>
+</body>
+</html>
