@@ -1,5 +1,7 @@
 # 六爻排盘 · Liu Yao Oracle
 
+https://wwwccy.github.io/liuyao/liuyao/
+
 A single-file Six Lines (六爻) divination tool built on traditional Na Jia (纳甲) methodology. No installation, no dependencies — open the HTML file and start reading.
 
 **English / 中文 bilingual interface.**
